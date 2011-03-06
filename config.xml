@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+	<actions/>
+	<description></description>
+	<keepDependencies>false</keepDependencies>
+	<properties/>
+	<scm class="hudson.scm.NullSCM"/>
+	<canRoam>true</canRoam>
+	<disabled>true</disabled>
+	<blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+	<blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+	<triggers class="vector"/>
+	<concurrentBuild>false</concurrentBuild>
+	<builders>
+		<hudson.tasks.Ant>
+			<targets></targets>
+		</hudson.tasks.Ant>
+	</builders>
+	<publishers>
+		<com.thalesgroup.hudson.plugins.xunit.XUnitPublisher>
+			<types>
+				<com.thalesgroup.dtkit.metrics.hudson.model.PHPUnitJunitHudsonTestType>
+					<pattern>build/logs/junit.xml</pattern>
+					<faildedIfNotNew>true</faildedIfNotNew>
+					<deleteOutputFiles>true</deleteOutputFiles>
+				</com.thalesgroup.dtkit.metrics.hudson.model.PHPUnitJunitHudsonTestType>
+			</types>
+		</com.thalesgroup.hudson.plugins.xunit.XUnitPublisher>
+		<hudson.plugins.clover.CloverPublisher>
+			<cloverReportDir>build/logs</cloverReportDir>
+			<cloverReportFileName>clover.xml</cloverReportFileName>
+			<healthyTarget>
+				<methodCoverage>70</methodCoverage>
+				<conditionalCoverage>80</conditionalCoverage>
+				<statementCoverage>80</statementCoverage>
+			</healthyTarget>
+			<unhealthyTarget/>
+			<failingTarget/>
+		</hudson.plugins.clover.CloverPublisher>
+	</publishers>
+	<buildWrappers/>
+</project>
+

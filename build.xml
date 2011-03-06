@@ -1,0 +1,18 @@
+<project name="yii" default="build" basedir=".">
+    <property name="source" value="protected"/>
+    <target name="clean">
+        <!-- Clean up -->
+        <delete dir="build"/>
+        <!-- Create build directories -->
+        <mkdir dir="${basedir}/build/coverage"/>
+        <mkdir dir="${basedir}/build/logs"/>
+    </target>
+
+    <target name="phpunit">
+        <exec dir="${basedir}/protected/tests" executable="phpunit" failonerror="true">
+            <arg line="unit" />
+        </exec>
+    </target>
+
+    <target name="build" depends="clean,phpunit"/>
+</project>
